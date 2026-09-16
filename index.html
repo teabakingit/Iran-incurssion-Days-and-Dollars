@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iran War Duration & Cost Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #121212;
+      color: #ffffff;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .tracker-box {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+    .highlight-value {
+      font-weight: bold;
+      color: #ff4d4d;
+    }
+    .source-label {
+      font-size: 0.85rem;
+      color: #888888;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Iran War Tracker</h1>
+    
+    <!-- Image Display -->
+    <img src="background.jpg" alt="Iran War Tracker Image">
+
+    <!-- Tracker Display -->
+    <div class="tracker-box">
+      <h2>Operation Epic Fury Stats</h2>
+      <p>Duration: <span id="days-count" class="highlight-value">Calculating...</span></p>
+      <p>Estimated Total Cost: <span id="total-cost" class="highlight-value">Calculating...</span></p>
+      <p>Estimated Daily Cost: <span class="highlight-value">$1,000,000,000 / day</span></p>
+      <p class="source-label">Started: February 28, 2026</p>
+    </div>
+  </div>
+
+  <script>
+    function updateWarTracker() {
+      // Conflict start date: February 28, 2026
+      const startDate = new Date('2026-02-28T00:00:00');
+      const currentDate = new Date();
+
+      // Calculate time difference in milliseconds
+      const timeDiff = currentDate.getTime() - startDate.getTime();
+
+      // Convert time difference to total days
+      const daysElapsed = Math.floor(timeDiff / (1000 * 3600 * 24));
+
+      // Estimated daily cost in dollars ($1 Billion / day)
+      const dailyCost = 1000000000;
+      const totalCost = daysElapsed * dailyCost;
+
+      // Format currency for clean display
+      const formattedCost = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0
+      }).format(totalCost);
+
+      // Display results dynamically
+      document.getElementById('days-count').innerText = daysElapsed + ' Days';
+      document.getElementById('total-cost').innerText = formattedCost;
+    }
+
+    // Run when page loads
+    updateWarTracker();
+  </script>
+
+</body>
+</html>
