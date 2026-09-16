@@ -47,7 +47,7 @@
   <div class="container">
     <h1>Iran War Tracker</h1>
     
-    <!-- Image Display -->
+    <!-- Background Image -->
     <img src="background.jpg" alt="Iran War Tracker Image">
 
     <!-- Tracker Display -->
@@ -72,23 +72,22 @@
       // Convert time difference to total days
       const daysElapsed = Math.floor(timeDiff / (1000 * 3600 * 24));
 
-      // Estimated daily cost in dollars ($1 Billion / day)
+      // Daily cost estimate ($1 Billion per day)
       const dailyCost = 1000000000;
       const totalCost = daysElapsed * dailyCost;
 
-      // Format currency for clean display
+      // Format currency as standard USD
       const formattedCost = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
         maximumFractionDigits: 0
       }).format(totalCost);
 
-      // Display results dynamically
+      // Render to page
       document.getElementById('days-count').innerText = daysElapsed + ' Days';
       document.getElementById('total-cost').innerText = formattedCost;
     }
 
-    // Run when page loads
     updateWarTracker();
   </script>
 
